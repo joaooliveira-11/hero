@@ -22,7 +22,8 @@ public class Game {
         screen.startScreen();
         screen.doResizeIfNecessary();
 
-        this.hero = new Hero(10,10);
+        Position position = new Position(10, 10);
+        this.hero = new Hero(position);
     }
 
     private void draw() throws IOException {
@@ -39,16 +40,16 @@ public class Game {
             processKey(key);
             switch (key.getKeyType()) {
                 case ArrowUp:
-                    hero.moveUp();
+                    moveHero(hero.moveUp());
                     break;
                 case ArrowDown:
-                    hero.moveDown();
+                    moveHero(hero.moveDown());
                     break;
                 case ArrowRight:
-                    hero.moveRight();
+                    moveHero(hero.moveRight());
                     break;
                 case ArrowLeft:
-                    hero.moveLeft();
+                    moveHero(hero.moveLeft());
                     break;
                 case Character:
                     if (key.getCharacter() == 'q') {
@@ -62,6 +63,10 @@ public class Game {
         }
     }
 
+
+    private void moveHero(Position position) {
+        hero.setPosition(position);
+    }
     private void processKey(KeyStroke key) {
         System.out.println(key);
     }
