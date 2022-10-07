@@ -19,12 +19,14 @@ public class Hero {
     public Position moveRight(){
         return new Position(position.getX() + 1, position.getY());
     }
-
-    public void draw(Screen screen){
-        screen.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter('X')[0]);
-    }
-
     public void setPosition(Position position){
         this.position = position;
+    }
+    public int getHeroX(){
+        return this.position.getX();
+    }
+
+    public int getHeroY(){
+        return this.position.getY();
     }
 }

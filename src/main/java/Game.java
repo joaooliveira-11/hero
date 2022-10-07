@@ -11,6 +11,7 @@ import java.io.IOException;
 public class Game {
     private Screen screen;
     private Hero hero;
+    private Arena arena;
 
     public Game() throws IOException {
         TerminalSize terminalSize = new TerminalSize(40, 20);
@@ -24,11 +25,12 @@ public class Game {
 
         Position position = new Position(10, 10);
         this.hero = new Hero(position);
+        this.arena = new Arena(40,20, hero);
     }
 
     private void draw() throws IOException {
         screen.clear();
-        hero.draw(screen);
+        arena.draw(screen);
         screen.refresh();
     }
 
@@ -40,16 +42,16 @@ public class Game {
             processKey(key);
             switch (key.getKeyType()) {
                 case ArrowUp:
-                    moveHero(hero.moveUp());
+                    arena.moveHero(hero.moveUp());
                     break;
                 case ArrowDown:
-                    moveHero(hero.moveDown());
+                    arena.moveHero(hero.moveDown());
                     break;
                 case ArrowRight:
-                    moveHero(hero.moveRight());
+                    arena.moveHero(hero.moveRight());
                     break;
                 case ArrowLeft:
-                    moveHero(hero.moveLeft());
+                    arena.moveHero(hero.moveLeft());
                     break;
                 case Character:
                     if (key.getCharacter() == 'q') {
@@ -62,14 +64,7 @@ public class Game {
             }
         }
     }
-
-
-    private void moveHero(Position position) {
-        hero.setPosition(position);
-    }
     private void processKey(KeyStroke key) {
         System.out.println(key);
     }
-
-
 }
