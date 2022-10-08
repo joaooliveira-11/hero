@@ -38,6 +38,6 @@ public class Hero {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#BE99CC"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(this.getHeroX(), this.getHeroY()), "X");
+        graphics.putString(new TerminalPosition(this.getHeroX(), this.getHeroY()), "x");
     }
 }
