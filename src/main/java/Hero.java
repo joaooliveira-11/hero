@@ -5,35 +5,24 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 
-public class Hero {
+public class Hero extends Element {
     private Position position;
 
     public Hero(Position position){
-        this.position = position;
+        super(position);
     }
     public Position moveUp(){
-        return new Position(position.getX(), position.getY() - 1);
+        return new Position(getPosition().getX(), getPosition().getY() - 1);
     }
     public Position moveDown(){
-        return new Position(position.getX(), position.getY() + 1);
+        return new Position(getPosition().getX(), getPosition().getY() + 1);
     }
     public Position moveLeft(){
-        return new Position(position.getX() -1, position.getY());
+        return new Position(getPosition().getX() -1, getPosition().getY());
     }
     public Position moveRight(){
-        return new Position(position.getX() + 1, position.getY());
+        return new Position(getPosition().getX() + 1, getPosition().getY());
     }
-    public void setPosition(Position position){
-        this.position = position;
-    }
-    public int getHeroX(){
-        return this.position.getX();
-    }
-
-    public int getHeroY(){
-        return this.position.getY();
-    }
-
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#BE99CC"));
