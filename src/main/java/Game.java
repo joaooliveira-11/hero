@@ -38,6 +38,13 @@ public class Game {
         boolean test = true;
         while (test) {
             draw();
+            arena.moveMonsters();
+            draw();
+            if(arena.verifyMonsterCollisions()){
+                System.out.println("Game over");
+                this.screen.close();
+                break;
+            }
             KeyStroke key = screen.readInput();
             processKey(key);
             switch (key.getKeyType()) {
